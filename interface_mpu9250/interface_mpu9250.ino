@@ -113,5 +113,5 @@ void loop()
   Serial.print (mz-700,DEC);
   Serial.print ("\t");
   Serial.println("");
-  delay(100); 
+  delay(10); 
 }
