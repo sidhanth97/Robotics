@@ -21,10 +21,9 @@ CODES:
   -> Flysky reciever Interfacing
   -> Complementary or Madgwick Filter (Yaw is important)
   -> PID controller
-  -> Logic has to be {
-                        "Equating reciever inputs to throttle stick value" : U_RL + U_RR = U_R,
-                        "Equating PID controller calculated control value" : delta_U_R = PID(),
-                        "Equating Mechanics Equations to servo control value": delta_U_R*k = U_S,
-                        "Calculating U_RL,U_RR individually from equation 1 and 2": U_RL,U_RR
-                      } 
+  -> Logic has to be as follows:
+       1. Equating reciever inputs to throttle stick value : U_RL + U_RR = U_R
+       2. Equating PID controller calculated control value : delta_U_R = PID()
+       3. Equating Mechanics Equations to servo control value : Mult(delta_U_R,k) = U_S
+       4. Calculating U_RL,U_RR individually from equation 1 and 2 : U_RL,U_RR
                        
