@@ -17,13 +17,13 @@ BUILD:
 7. Oil all actuators
 
 CODES:
-  -> MPU Interfacing
-  -> Flysky reciever Interfacing
-  -> Complementary or Madgwick Filter (Yaw is important)
-  -> PID controller
-  -> Logic has to be as follows:
-       1. Equating reciever inputs to throttle stick value : U_RL + U_RR = U_R
-       2. Equating PID controller calculated control value : delta_U_R = PID()
-       3. Equating Mechanics Equations to servo control value : Mult(delta_U_R,k) = U_S
-       4. Calculating U_RL,U_RR individually from equation 1 and 2 : U_RL,U_RR
-                       
+1. MPU Interfacing
+2. Flysky reciever Interfacing
+3. Complementary or Madgwick Filter (Yaw is important)
+4. PID controller
+5. Logic for calculating pulse value:
+     1. Equating reciever inputs to throttle stick value : U_RL + U_RR = U_R
+     2. Equating PID controller calculated control value : delta_U_R = PID()
+     3. Equating Mechanics Equations to servo control value : Mult(delta_U_R,k) = U_S
+     4. Calculating U_RL,U_RR individually from equation 1 and 2 : U_RL,U_RR
+
