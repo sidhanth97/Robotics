@@ -15,6 +15,7 @@ BUILD:
 5. Calculate Mass, COM distances, Dimensions of the vehicle
 6. Place for control circuit
 7. Oil all actuators
+8. Battery health circuit
 
 CODES:
 1. MPU Interfacing
