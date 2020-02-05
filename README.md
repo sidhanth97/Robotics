@@ -54,3 +54,6 @@ MadgwickQuaternionUpdate(-ay, -ax, az, gy_PI/180.0f, gx_PI/180.0f,
 -gz_PI/180.0f, mx, my, mz);
 // if(passThru)MahonyQuaternionUpdate(-ay, -ax, az, gy_PI/180.0f,
 gx_PI/180.0f, -gz_PI/180.0f, mx, my, mz);
+
+
+https://github.com/1994james
