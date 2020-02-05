@@ -28,3 +28,29 @@ CODES:
      3. Equating Mechanics Equations to servo control value : Mult(delta_U_R,k) = U_S
      4. Calculating U_RL,U_RR individually from equation 1 and 2 : U_RL,U_RR
 
+
+
+Maybe you can use the following MPU9250-specific info:
+
+// Sensors x (y)-axis of the accelerometer/gyro is aligned with the y
+(x)-axis of the magnetometer;
+// the magnetometer z-axis (+ down) is misaligned with z-axis (+ up) of
+accelerometer and gyro!
+// We have to make some allowance for this orientation mismatch in feeding
+the output to the quaternion filter.
+// We will assume that +y accel/gyro is North, then x accel/gyro is East.
+So if we want te quaternions properly aligned
+// we need to feed into the madgwick function Ay, Ax, -Az, Gy, Gx, -Gz,
+Mx, My, and Mz. But because gravity is by convention
+// positive down, we need to invert the accel data, so we pass -Ay, -Ax,
+Az, Gy, Gx, -Gz, Mx, My, and Mz into the Madgwick
+// function to get North along the accel +y-axis, East along the accel
++x-axis, and Down along the accel -z-axis.
+// This orientation choice can be modified to allow any convenient
+(non-NED) orientation convention.
+// This is ok by aircraft orientation standards!
+// Pass gyro rate as rad/s
+MadgwickQuaternionUpdate(-ay, -ax, az, gy_PI/180.0f, gx_PI/180.0f,
+-gz_PI/180.0f, mx, my, mz);
+// if(passThru)MahonyQuaternionUpdate(-ay, -ax, az, gy_PI/180.0f,
+gx_PI/180.0f, -gz_PI/180.0f, mx, my, mz);
